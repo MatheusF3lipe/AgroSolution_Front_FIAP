@@ -1,0 +1,1217 @@
+/* ============================
+   Minhas Propriedades — AgroSolution
+   ============================ */
+
+$green-700: #1a6b1a;
+$green-600: #228b22;
+$green-500: #2ea82e;
+$green-100: #d4f5d4;
+$green-50: #eefaee;
+
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-700: #374151;
+$gray-900: #111827;
+
+$red-500: #ef4444;
+$red-50: #fef2f2;
+$red-100: #fee2e2;
+$red-700: #b91c1c;
+
+$amber-50: #fffbeb;
+$amber-100: #fef3c7;
+$amber-600: #d97706;
+
+$emerald-50: #ecfdf5;
+$emerald-100: #d1fae5;
+$emerald-700: #047857;
+
+$radius-sm: 8px;
+$radius-md: 12px;
+
+$shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08),
+  0 2px 4px -1px rgba(0, 0, 0, 0.04);
+
+.minhas-propriedades {
+  max-width: 1100px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $gray-900;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: $gray-500;
+  }
+}
+
+.btn-nova {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, $green-700, $green-500);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: $shadow-md;
+  transition: transform 0.15s, box-shadow 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// ——— Banners ———
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: $radius-sm;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  animation: slideDown 0.3s ease;
+}
+
+.error-banner {
+  background: $red-50;
+  border: 1px solid $red-100;
+  color: $red-700;
+}
+
+.success-banner {
+  background: $emerald-50;
+  border: 1px solid $emerald-100;
+  color: $emerald-700;
+}
+
+.retry-btn {
+  margin-left: auto;
+  padding: 6px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $red-700;
+  background: #ffffff;
+  border: 1px solid $red-100;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background: $red-50;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ——— Loading ———
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+
+  p {
+    margin-top: 16px;
+    color: $gray-500;
+    font-size: 0.95rem;
+  }
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid $gray-200;
+  border-top-color: $green-600;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ——— Empty State ———
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #ffffff;
+  border-radius: $radius-md;
+  box-shadow: $shadow;
+  text-align: center;
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $gray-900;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $gray-500;
+    max-width: 400px;
+    margin-bottom: 24px;
+  }
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, $green-700, $green-500);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: $shadow-md;
+  transition: transform 0.15s, box-shadow 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// ——— Grid de Cards ———
+.propriedades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.propriedade-card {
+  background: #ffffff;
+  border-radius: $radius-md;
+  box-shadow: $shadow;
+  padding: 24px;
+  transition: box-shadow 0.2s, transform 0.15s;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+
+  &.card-expanded {
+    box-shadow: $shadow-md;
+  }
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: $green-50;
+  color: $green-600;
+  flex-shrink: 0;
+}
+
+.card-title-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $gray-900;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// ——— Botões de Ação no Card ———
+.card-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  svg {
+    opacity: 0.7;
+    transition: opacity 0.15s;
+  }
+
+  &:hover svg {
+    opacity: 1;
+  }
+}
+
+.edit-btn {
+  color: $green-600;
+  background: $green-50;
+  border-color: $green-100;
+
+  &:hover {
+    background: $green-100;
+  }
+}
+
+.delete-btn {
+  color: $red-500;
+  background: $red-50;
+  border-color: $red-100;
+
+  &:hover {
+    background: $red-100;
+  }
+}
+
+// ——— Badge de Status ———
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: none;
+  min-width: 56px;
+  min-height: 22px;
+}
+
+.badge-clickable {
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+
+  &:hover {
+    filter: brightness(0.95);
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.8;
+  }
+}
+
+.badge-sm {
+  padding: 2px 8px;
+  font-size: 0.68rem;
+  min-width: auto;
+  cursor: default;
+}
+
+.badge-active {
+  background: $green-50;
+  color: $green-700;
+  border: 1px solid $green-100;
+}
+
+.badge-inactive {
+  background: $red-50;
+  color: $red-700;
+  border: 1px solid $red-100;
+}
+
+.mini-spinner-inline {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid $gray-200;
+  border-top-color: $green-600;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+// ——— Confirmação de Exclusão ———
+.delete-confirm {
+  margin: 12px 0;
+  padding: 16px;
+  background: $red-50;
+  border: 1px solid $red-100;
+  border-radius: $radius-sm;
+  animation: slideDown 0.2s ease;
+}
+
+.delete-confirm-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: $gray-700;
+  margin-bottom: 12px;
+}
+
+.delete-warn-icon {
+  color: $amber-600;
+  flex-shrink: 0;
+}
+
+.delete-error-msg {
+  font-size: 0.82rem;
+  color: $red-700;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid $red-100;
+}
+
+.delete-confirm-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-cancel-delete {
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $gray-700;
+  background: #ffffff;
+  border: 1px solid $gray-200;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $gray-50;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-confirm-delete {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: $red-500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $red-700;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .mini-spinner-inline {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+  }
+}
+
+// ——— Descrição ———
+.card-description {
+  font-size: 0.875rem;
+  color: $gray-500;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid $gray-100;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: $gray-500;
+
+  svg {
+    color: $gray-400;
+    flex-shrink: 0;
+  }
+}
+
+// ——— Modo Edição ———
+.edit-mode {
+  animation: slideDown 0.25s ease;
+}
+
+.edit-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: $green-600;
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $gray-900;
+  }
+}
+
+.edit-error-banner {
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+}
+
+.edit-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.edit-form-group {
+  &.full-width {
+    grid-column: 1 / -1;
+  }
+
+  > label,
+  label:not(.radio-label) {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $gray-700;
+    margin-bottom: 5px;
+  }
+}
+
+.edit-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 0.88rem;
+  color: $gray-900;
+  background: $gray-50;
+  border: 1.5px solid $gray-200;
+  border-radius: $radius-sm;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $green-500;
+    box-shadow: 0 0 0 3px rgba($green-500, 0.15);
+  }
+
+  &.error {
+    border-color: $red-500;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($red-500, 0.12);
+    }
+  }
+}
+
+.edit-textarea {
+  height: auto;
+  padding: 10px 12px;
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+.uf-readonly {
+  background: $gray-100;
+  color: $gray-700;
+  cursor: default;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.field-error {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: $red-500;
+}
+
+// Cidade autocomplete dentro do modo de edição
+.cidade-wrapper {
+  position: relative;
+}
+
+.cidade-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: $gray-500;
+}
+
+.cidade-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin-top: 4px;
+  padding: 4px 0;
+  background: #ffffff;
+  border: 1.5px solid $gray-200;
+  border-radius: $radius-sm;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  list-style: none;
+  max-height: 180px;
+  overflow-y: auto;
+  animation: slideDown 0.2s ease;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+      background: $green-50;
+    }
+  }
+}
+
+.cidade-nome {
+  font-size: 0.85rem;
+  color: $gray-900;
+  font-weight: 500;
+}
+
+.cidade-uf {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $green-600;
+  background: $green-50;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+// Radio buttons (edição)
+.radio-group {
+  display: flex;
+  gap: 24px;
+  padding-top: 4px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 400 !important;
+  margin-bottom: 0 !important;
+
+  input[type='radio'] {
+    display: none;
+  }
+}
+
+.radio-custom {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 2px solid $gray-300;
+  border-radius: 50%;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $green-600;
+    transition: transform 0.2s;
+  }
+
+  input[type='radio']:checked + & {
+    border-color: $green-600;
+
+    &::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.radio-text {
+  font-size: 0.9rem;
+  color: $gray-700;
+}
+
+// Ações do formulário de edição
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid $gray-100;
+}
+
+.btn-cancel-edit {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $gray-700;
+  background: #ffffff;
+  border: 1px solid $gray-200;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $gray-50;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-save-edit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, $green-700, $green-500);
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  box-shadow: $shadow;
+  transition: transform 0.15s, box-shadow 0.2s;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .mini-spinner-inline {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+  }
+}
+
+// ——— Botão Ver Talhões ———
+.btn-talhoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $green-700;
+  background: $green-50;
+  border: 1px solid $green-100;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    background: $green-100;
+  }
+
+  svg:first-child {
+    color: $green-600;
+  }
+
+  span {
+    flex: 1;
+    text-align: left;
+  }
+}
+
+.chevron {
+  color: $green-600;
+  transition: transform 0.25s ease;
+}
+
+.chevron-up {
+  transform: rotate(180deg);
+}
+
+// ——— Seção de Talhões ———
+.talhoes-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid $gray-200;
+  animation: slideDown 0.25s ease;
+}
+
+.talhoes-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0;
+  font-size: 0.85rem;
+  color: $gray-500;
+}
+
+.mini-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid $gray-200;
+  border-top-color: $green-600;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.talhoes-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  color: $red-700;
+  background: $red-50;
+  border: 1px solid $red-100;
+  border-radius: $radius-sm;
+}
+
+.retry-btn-sm {
+  margin-left: auto;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $red-700;
+  background: #ffffff;
+  border: 1px solid $red-100;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $red-50;
+  }
+}
+
+.talhoes-empty {
+  text-align: center;
+  padding: 20px 0 8px;
+
+  p {
+    font-size: 0.85rem;
+    color: $gray-500;
+    margin-bottom: 10px;
+  }
+}
+
+.link-cadastrar-talhao {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: $green-600;
+  text-decoration: none;
+  transition: color 0.15s;
+
+  &:hover {
+    color: $green-700;
+    text-decoration: underline;
+  }
+}
+
+// ——— Lista de Talhões ———
+.talhoes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.talhao-item {
+  padding: 14px 16px;
+  background: $gray-50;
+  border: 1px solid $gray-200;
+  border-radius: $radius-sm;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: $green-100;
+  }
+}
+
+.talhao-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.talhao-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: $green-50;
+  color: $green-600;
+  flex-shrink: 0;
+}
+
+.talhao-nome {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $gray-900;
+  flex: 1;
+}
+
+.talhao-details {
+  display: flex;
+  gap: 20px;
+  padding-left: 40px;
+}
+
+.talhao-detail {
+  font-size: 0.82rem;
+  color: $gray-500;
+
+  strong {
+    font-weight: 600;
+    color: $gray-700;
+  }
+}
+
+// ——— Edição de Talhão ———
+.talhao-item.talhao-editing {
+  border-color: $green-500;
+  background: #ffffff;
+}
+
+.talhao-edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: $gray-400;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+
+  &:hover {
+    color: $green-600;
+    background: $green-50;
+    border-color: $green-100;
+  }
+}
+
+.talhao-edit-form {
+  animation: slideDown 0.2s ease;
+}
+
+.talhao-edit-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: $green-700;
+  margin-bottom: 12px;
+
+  svg {
+    color: $green-600;
+  }
+}
+
+.talhao-edit-error {
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 0.8rem;
+  color: $red-700;
+  background: $red-50;
+  border: 1px solid $red-100;
+  border-radius: 6px;
+}
+
+.talhao-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.talhao-edit-group {
+  > label:not(.radio-label) {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: $gray-700;
+    margin-bottom: 4px;
+  }
+}
+
+.talhao-edit-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  font-size: 0.85rem;
+  color: $gray-900;
+  background: $gray-50;
+  border: 1px solid $gray-200;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $green-500;
+    box-shadow: 0 0 0 2px rgba($green-500, 0.12);
+  }
+
+  &.error {
+    border-color: $red-500;
+
+    &:focus {
+      box-shadow: 0 0 0 2px rgba($red-500, 0.1);
+    }
+  }
+}
+
+.talhao-edit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.btn-cancel-talhao,
+.btn-save-talhao {
+  padding: 7px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.btn-cancel-talhao {
+  background: $gray-100;
+  color: $gray-700;
+  border: 1px solid $gray-200;
+
+  &:hover:not(:disabled) {
+    background: $gray-200;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-save-talhao {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, $green-700, $green-500);
+  color: #ffffff;
+  border: none;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .mini-spinner-inline {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+  }
+}
+
+// ——— Responsivo ———
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .propriedades-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .banner {
+    flex-wrap: wrap;
+  }
+
+  .retry-btn {
+    margin-left: 0;
+    margin-top: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-top {
+    flex-wrap: wrap;
+  }
+
+  .card-actions {
+    width: 100%;
+    justify-content: flex-end;
+    order: -1;
+    margin-bottom: 4px;
+  }
+
+  .edit-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-actions {
+    flex-direction: column;
+
+    .btn-cancel-edit,
+    .btn-save-edit {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .delete-confirm-actions {
+    flex-direction: column;
+
+    .btn-cancel-delete,
+    .btn-confirm-delete {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .talhao-details {
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 40px;
+  }
+
+  .talhao-edit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .talhao-edit-actions {
+    flex-direction: column;
+
+    .btn-cancel-talhao,
+    .btn-save-talhao {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+// ——— Mensagem propriedade inativa ———
+.talhao-inativa-msg {
+  font-size: 0.82rem;
+  color: $gray-500;
+  font-style: italic;
+  margin: 4px 0 0;
+  padding: 0;
+}

@@ -1,0 +1,168 @@
+<div class="cadastrar-talhao">
+  <div class="page-header">
+    <h1>Cadastrar Talhão</h1>
+    <p>Registre um novo talhão vinculado a uma propriedade</p>
+  </div>
+
+  <!-- Mensagens -->
+  @if (errorMessage()) {
+    <div class="banner error-banner">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+      </svg>
+      <span>{{ errorMessage() }}</span>
+    </div>
+  }
+  @if (successMessage()) {
+    <div class="banner success-banner">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+      </svg>
+      <span>{{ successMessage() }}</span>
+    </div>
+  }
+
+  <form [formGroup]="talhaoForm" (ngSubmit)="onSubmit()">
+    <!-- Propriedade -->
+    <div class="card">
+      <div class="card-header">
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd" />
+        </svg>
+        <h2>Propriedade</h2>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label for="idPropriedade">Selecione a propriedade</label>
+          @if (carregandoPropriedades()) {
+            <div class="loading-select">
+              <span class="mini-spinner"></span>
+              Carregando propriedades...
+            </div>
+          } @else {
+            <select
+              id="idPropriedade"
+              formControlName="idPropriedade"
+              class="input select"
+              [class.error]="f['idPropriedade'].touched && f['idPropriedade'].invalid">
+              <option value="" disabled>-- Selecione uma propriedade --</option>
+              @for (prop of propriedades(); track prop.idPropriedade) {
+                <option [value]="prop.idPropriedade">{{ prop.nome }}</option>
+              }
+            </select>
+          }
+          @if (f['idPropriedade'].touched && f['idPropriedade'].errors) {
+            <span class="field-error">Selecione uma propriedade</span>
+          }
+          @if (!carregandoPropriedades() && propriedades().length === 0) {
+            <span class="field-hint">
+              Nenhuma propriedade ativa encontrada. Somente propriedades ativas podem receber talhões.
+              <a routerLink="/app/cadastrar-propriedade">Cadastre uma propriedade</a> ou ative uma existente.
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Informações do Talhão -->
+    <div class="card">
+      <div class="card-header">
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd" />
+        </svg>
+        <h2>Informações do Talhão</h2>
+      </div>
+
+      <div class="form-grid">
+        <!-- Nome -->
+        <div class="form-group full-width">
+          <label for="nome">Nome do talhão</label>
+          <input
+            id="nome"
+            type="text"
+            formControlName="nome"
+            placeholder="Ex: Talhão Norte, Lote A1"
+            class="input"
+            [class.error]="f['nome'].touched && f['nome'].invalid" />
+          @if (f['nome'].touched && f['nome'].errors) {
+            <span class="field-error">
+              @if (f['nome'].errors['required']) {
+                Nome é obrigatório
+              } @else if (f['nome'].errors['minlength']) {
+                Mínimo de 2 caracteres
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Cultura -->
+        <div class="form-group">
+          <label for="cultura">Cultura</label>
+          <input
+            id="cultura"
+            type="text"
+            formControlName="cultura"
+            placeholder="Ex: Soja, Milho, Café"
+            class="input"
+            [class.error]="f['cultura'].touched && f['cultura'].invalid" />
+          @if (f['cultura'].touched && f['cultura'].errors) {
+            <span class="field-error">Cultura é obrigatória</span>
+          }
+        </div>
+
+        <!-- Área em Hectares -->
+        <div class="form-group">
+          <label for="areaHa">Área (hectares)</label>
+          <input
+            id="areaHa"
+            type="number"
+            step="any"
+            formControlName="areaHa"
+            placeholder="Ex: 25.5"
+            class="input"
+            [class.error]="f['areaHa'].touched && f['areaHa'].invalid" />
+          @if (f['areaHa'].touched && f['areaHa'].errors) {
+            <span class="field-error">
+              @if (f['areaHa'].errors['required']) {
+                Área é obrigatória
+              } @else if (f['areaHa'].errors['min']) {
+                A área deve ser maior que 0
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Ativo -->
+        <div class="form-group">
+          <label>Status do talhão</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" formControlName="ativo" [value]="true" />
+              <span class="radio-custom"></span>
+              <span class="radio-text">Ativo</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" formControlName="ativo" [value]="false" />
+              <span class="radio-custom"></span>
+              <span class="radio-text">Inativo</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão Submit -->
+    <button type="submit" class="btn-submit" [disabled]="isLoading()">
+      @if (isLoading()) {
+        <span class="spinner"></span>
+        <span>Salvando...</span>
+      } @else {
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        <span>Salvar Talhão</span>
+      }
+    </button>
+  </form>
+</div>

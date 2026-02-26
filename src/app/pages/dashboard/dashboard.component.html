@@ -1,0 +1,87 @@
+<div class="dashboard">
+  <div class="page-header">
+    <h1>Dashboard</h1>
+    <p>Visão geral da sua produção agrícola</p>
+  </div>
+
+  <!-- Cards de Resumo -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon green">
+        <svg width="28" height="28" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Propriedades</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon blue">
+        <svg width="28" height="28" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
+        </svg>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">0</span>
+        <span class="stat-label">Talhões</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon amber">
+        <svg width="28" height="28" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">--</span>
+        <span class="stat-label">Área total (ha)</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon purple">
+        <svg width="28" height="28" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+          <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="stat-info">
+        <span class="stat-value">--</span>
+        <span class="stat-label">Relatórios</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção de boas-vindas -->
+  <div class="welcome-card">
+    <div class="welcome-content">
+      <h2>Bem-vindo ao AgroSolution!</h2>
+      <p>
+        Comece cadastrando sua primeira propriedade e seus talhões para
+        aproveitar todas as funcionalidades da plataforma.
+      </p>
+      <a routerLink="/app/cadastrar-propriedade" class="btn-action">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        Cadastrar Propriedade
+      </a>
+    </div>
+    <div class="welcome-illustration">
+      <svg width="160" height="120" viewBox="0 0 160 120" fill="none">
+        <rect x="10" y="80" width="140" height="30" rx="4" fill="#d4f5d4" />
+        <rect x="30" y="50" width="30" height="30" rx="3" fill="#228b22" />
+        <polygon points="30,50 45,30 60,50" fill="#1a6b1a" />
+        <rect x="70" y="40" width="40" height="40" rx="3" fill="#2ea82e" />
+        <polygon points="70,40 90,15 110,40" fill="#228b22" />
+        <rect x="120" y="55" width="25" height="25" rx="3" fill="#4ec94e" />
+        <polygon points="120,55 132,38 145,55" fill="#2ea82e" />
+        <circle cx="140" cy="25" r="12" fill="#fbbf24" opacity="0.8" />
+      </svg>
+    </div>
+  </div>
+</div>

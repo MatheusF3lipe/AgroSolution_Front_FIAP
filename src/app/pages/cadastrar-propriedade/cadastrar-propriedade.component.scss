@@ -1,0 +1,376 @@
+/* ============================
+   Cadastrar Propriedade — AgroSolution
+   ============================ */
+
+$green-700: #1a6b1a;
+$green-600: #228b22;
+$green-500: #2ea82e;
+$green-100: #d4f5d4;
+$green-50: #eefaee;
+
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-700: #374151;
+$gray-900: #111827;
+
+$red-500: #ef4444;
+$red-50: #fef2f2;
+$red-100: #fee2e2;
+$red-700: #b91c1c;
+
+$emerald-50: #ecfdf5;
+$emerald-100: #d1fae5;
+$emerald-700: #047857;
+
+$radius-sm: 8px;
+$radius-md: 12px;
+
+$shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08),
+  0 2px 4px -1px rgba(0, 0, 0, 0.04);
+
+.cadastrar-propriedade {
+  max-width: 800px;
+}
+
+.page-header {
+  margin-bottom: 28px;
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $gray-900;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: $gray-500;
+  }
+}
+
+// ——— Banners ———
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: $radius-sm;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  animation: slideDown 0.3s ease;
+}
+
+.error-banner {
+  background: $red-50;
+  border: 1px solid $red-100;
+  color: $red-700;
+}
+
+.success-banner {
+  background: $emerald-50;
+  border: 1px solid $emerald-100;
+  color: $emerald-700;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ——— Card ———
+.card {
+  background: #ffffff;
+  border-radius: $radius-md;
+  box-shadow: $shadow;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  color: $green-600;
+
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $gray-900;
+    flex: 1;
+  }
+}
+
+// ——— Form ———
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  margin-bottom: 0;
+
+  label {
+    display: flex;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $gray-700;
+    margin-bottom: 6px;
+  }
+}
+
+.input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  font-size: 0.95rem;
+  color: $gray-900;
+  background: $gray-50;
+  border: 1.5px solid $gray-200;
+  border-radius: $radius-sm;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $green-500;
+    box-shadow: 0 0 0 3px rgba($green-500, 0.15);
+  }
+
+  &.error {
+    border-color: $red-500;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($red-500, 0.12);
+    }
+  }
+}
+
+.textarea {
+  height: auto;
+  padding: 12px 14px;
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+.uf-input {
+  background: $gray-100;
+  color: $gray-700;
+  cursor: default;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.field-error {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: $red-500;
+}
+
+// ——— Cidade Autocomplete ———
+.cidade-wrapper {
+  position: relative;
+}
+
+.cidade-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: $gray-500;
+}
+
+.mini-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid $gray-200;
+  border-top-color: $green-600;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.cidade-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin-top: 4px;
+  padding: 6px 0;
+  background: #ffffff;
+  border: 1.5px solid $gray-200;
+  border-radius: $radius-sm;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  animation: slideDown 0.2s ease;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+      background: $green-50;
+    }
+  }
+}
+
+.cidade-nome {
+  font-size: 0.9rem;
+  color: $gray-900;
+  font-weight: 500;
+}
+
+.cidade-uf {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $green-600;
+  background: $green-50;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+// ——— Radio Buttons ———
+.radio-group {
+  display: flex;
+  gap: 24px;
+  padding-top: 4px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 400 !important;
+  margin-bottom: 0 !important;
+
+  input[type='radio'] {
+    display: none;
+  }
+}
+
+.radio-custom {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 2px solid $gray-300;
+  border-radius: 50%;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $green-600;
+    transition: transform 0.2s;
+  }
+
+  input[type='radio']:checked + & {
+    border-color: $green-600;
+
+    &::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+.radio-text {
+  font-size: 0.9rem;
+  color: $gray-700;
+}
+
+// ——— Submit ———
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  height: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, $green-700, $green-500);
+  border-radius: $radius-sm;
+  box-shadow: $shadow-md;
+  transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ——— Responsivo ———
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-submit {
+    max-width: 100%;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

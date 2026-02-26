@@ -1,0 +1,260 @@
+<div class="cadastro-page">
+  <!-- Painel esquerdo — Branding -->
+  <div class="cadastro-branding">
+    <div class="branding-content">
+      <div class="logo">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.15)" />
+          <path
+            d="M24 8C18 8 14 14 14 20C14 26 18 30 24 28C30 26 34 20 34 16C34 12 30 8 24 8Z"
+            fill="#ffffff" />
+          <path
+            d="M24 28C24 28 20 32 20 36C20 40 22 42 24 42C26 42 28 40 28 36C28 32 24 28 24 28Z"
+            fill="#a8e6a3" />
+        </svg>
+        <h1>AgroSolution</h1>
+      </div>
+      <p class="tagline">
+        Junte-se a milhares de produtores que já transformam <br />
+        sua produção com tecnologia de ponta.
+      </p>
+      <div class="features">
+        <div class="feature-item">
+          <span class="feature-icon">🚀</span>
+          <span>Comece gratuitamente</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🔒</span>
+          <span>Seus dados estão seguros</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📱</span>
+          <span>Acesse de qualquer dispositivo</span>
+        </div>
+      </div>
+    </div>
+    <div class="branding-footer">
+      <p>© 2026 AgroSolution — FIAP</p>
+    </div>
+  </div>
+
+  <!-- Painel direito — Formulário -->
+  <div class="cadastro-form-panel">
+    <div class="form-container">
+      <div class="form-header">
+        <h2>Crie sua conta</h2>
+        <p>Preencha os dados abaixo para começar</p>
+      </div>
+
+      <!-- Mensagem de erro -->
+      @if (errorMessage()) {
+        <div class="error-banner">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+              clip-rule="evenodd" />
+          </svg>
+          <span>{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <!-- Mensagem de sucesso -->
+      @if (successMessage()) {
+        <div class="success-banner">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd" />
+          </svg>
+          <span>{{ successMessage() }}</span>
+        </div>
+      }
+
+      <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+        <!-- Campo Nome Completo -->
+        <div class="form-group">
+          <label for="nome">Nome completo</label>
+          <div class="input-wrapper" [class.error]="f['nome'].touched && f['nome'].invalid">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clip-rule="evenodd" />
+            </svg>
+            <input
+              id="nome"
+              type="text"
+              formControlName="nome"
+              placeholder="Seu nome completo" />
+          </div>
+          @if (f['nome'].touched && f['nome'].errors) {
+            <span class="field-error">
+              @if (f['nome'].errors['required']) {
+                Nome é obrigatório
+              } @else if (f['nome'].errors['minlength']) {
+                O nome deve ter no mínimo 3 caracteres
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Campo de E-mail -->
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <div class="input-wrapper" [class.error]="f['email'].touched && f['email'].invalid">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="seu@email.com" />
+          </div>
+          @if (f['email'].touched && f['email'].errors) {
+            <span class="field-error">
+              @if (f['email'].errors['required']) {
+                E-mail é obrigatório
+              } @else if (f['email'].errors['email']) {
+                Informe um e-mail válido
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Campo de Senha -->
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <div class="input-wrapper" [class.error]="f['password'].touched && f['password'].invalid">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                clip-rule="evenodd" />
+            </svg>
+            <input
+              id="password"
+              [type]="showPassword() ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Mínimo 6 caracteres" />
+            <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+              @if (showPassword()) {
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"
+                    clip-rule="evenodd" />
+                  <path
+                    d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
+                </svg>
+              } @else {
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                    clip-rule="evenodd" />
+                </svg>
+              }
+            </button>
+          </div>
+          @if (f['password'].touched && f['password'].errors) {
+            <span class="field-error">
+              @if (f['password'].errors['required']) {
+                Senha é obrigatória
+              } @else if (f['password'].errors['minlength']) {
+                A senha deve ter no mínimo 6 caracteres
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Campo de Confirmar Senha -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirmar senha</label>
+          <div class="input-wrapper" [class.error]="f['confirmPassword'].touched && f['confirmPassword'].invalid">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l3-3z"
+                clip-rule="evenodd" />
+            </svg>
+            <input
+              id="confirmPassword"
+              [type]="showConfirmPassword() ? 'text' : 'password'"
+              formControlName="confirmPassword"
+              placeholder="Repita sua senha" />
+            <button type="button" class="toggle-password" (click)="toggleConfirmPasswordVisibility()">
+              @if (showConfirmPassword()) {
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"
+                    clip-rule="evenodd" />
+                  <path
+                    d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
+                </svg>
+              } @else {
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                    clip-rule="evenodd" />
+                </svg>
+              }
+            </button>
+          </div>
+          @if (f['confirmPassword'].touched && f['confirmPassword'].errors) {
+            <span class="field-error">
+              @if (f['confirmPassword'].errors['required']) {
+                Confirmação de senha é obrigatória
+              } @else if (f['confirmPassword'].errors['passwordMismatch']) {
+                As senhas não coincidem
+              }
+            </span>
+          }
+        </div>
+
+        <!-- Aceitar Termos -->
+        <div class="form-group termos-row">
+          <label class="checkbox-label" [class.error]="f['termos'].touched && f['termos'].invalid">
+            <input type="checkbox" formControlName="termos" />
+            <span class="checkmark"></span>
+            <span>
+              Li e aceito os
+              <a href="#" class="terms-link">Termos de Uso</a>
+              e a
+              <a href="#" class="terms-link">Política de Privacidade</a>
+            </span>
+          </label>
+          @if (f['termos'].touched && f['termos'].errors) {
+            <span class="field-error">
+              Você precisa aceitar os termos para continuar
+            </span>
+          }
+        </div>
+
+        <!-- Botão Submit -->
+        <button type="submit" class="btn-cadastro" [disabled]="isLoading()">
+          @if (isLoading()) {
+            <span class="spinner"></span>
+            <span>Criando conta...</span>
+          } @else {
+            <span>Criar conta</span>
+          }
+        </button>
+      </form>
+
+      <div class="form-footer">
+        <p>
+          Já tem uma conta?
+          <a routerLink="/login" class="login-link">Faça login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
